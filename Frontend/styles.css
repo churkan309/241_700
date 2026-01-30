@@ -1,0 +1,189 @@
+/* 1. การตั้งค่าพื้นฐาน (Global Reset) */
+:root {
+    /* กำหนดชุดสีเอิร์ธโทนเก็บไว้ในตัวแปรเพื่อให้แก้ไขง่าย */
+    --earth-bg-main: #f4f1ea;      /* สีพื้นหลังหลัก (ครีมอ่อน) */
+    --earth-bg-card: #fffefb;      /* สีพื้นหลังการ์ด (ขาวครีมสว่าง) */
+    --earth-text-dark: #5a5248;    /* สีตัวอักษรหลัก (น้ำตาลเข้ม) */
+    --earth-text-light: #7c7367;   /* สีตัวอักษรรอง (น้ำตาลเทา) */
+    --earth-accent: #c07c5f;       /* สีเน้น/สีปุ่ม (ส้มอิฐ/ดินเผา) */
+    --earth-accent-hover: #a3674e; /* สีปุ่มตอนเอาเมาส์ชี้ (เข้มขึ้น) */
+    --earth-border: #dcd6cb;       /* สีขอบ (เบจเทา) */
+    --earth-shadow: rgba(90, 82, 72, 0.1); /* สีเงา (โทนอุ่น) */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Prompt', 'Sarabun', sans-serif;
+    background-color: var(--earth-bg-main); /* เปลี่ยนพื้นหลังเป็นสีครีมอ่อน */
+    color: var(--earth-text-dark); /* สีตัวอักษรหลัก */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 2. กล่องคอนเทนเนอร์หลัก (Container) */
+.container {
+    background-color: var(--earth-bg-card);
+    width: 100%;
+    max-width: 500px;
+    padding: 35px; /* เพิ่ม padding อีกนิดให้ดูโปร่ง */
+    border-radius: 12px;
+    /* ปรับเงาให้เป็นโทนอุ่นและนุ่มนวลขึ้น */
+    box-shadow: 0 6px 20px var(--earth-shadow); 
+    border: 1px solid rgba(255, 255, 255, 0.5); /* เพิ่มขอบขาวจางๆ ให้ดูมีมิติ */
+}
+
+/* 3. ส่วนหัว (Header) */
+.header {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--earth-text-dark);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    /* เปลี่ยนเส้นใต้เป็นสีส้มอิฐ */
+    border-bottom: 3px solid var(--earth-accent); 
+    letter-spacing: 1px;
+}
+
+/* 4. การจัดการ Layout (Flex & Inputs) */
+.form-input {
+    margin-bottom: 22px;
+    color: var(--earth-text-light); /* สีข้อความ label ให้ดูเบาลง */
+    font-weight: 500;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-form {
+    min-width: 85px;
+    font-weight: 600;
+    color: var(--earth-text-dark);
+}
+
+/* ช่องกรอกข้อมูล (Input Text & Number) */
+.form {
+    flex: 1;
+    padding: 12px;
+    /* เปลี่ยนสีขอบให้กลมกลืน */
+    border: 2px solid var(--earth-border); 
+    background-color: #faf9f6; /* พื้นหลังช่องกรอกให้อ่อนกว่าการ์ดนิดหน่อย */
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--earth-text-dark);
+    transition: all 0.3s ease;
+}
+
+/* สถานะตอนกำลังพิมพ์ (Focus) */
+.form:focus, textarea:focus {
+    outline: none;
+    border-color: var(--earth-accent); /* เปลี่ยนขอบเป็นสีส้มอิฐ */
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(192, 124, 95, 0.15); /* เงาฟุ้งๆ สีส้มอิฐ */
+}
+
+/* 5. ส่วนเพศ (Gender) และ Checkbox */
+.gender .flex div {
+    display: flex;
+    align-items: center;
+    margin-right: 18px;
+    cursor: pointer;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    accent-color: var(--earth-accent); /* เปลี่ยนสีปุ่มติ๊กเลือกเป็นสีส้มอิฐ (รองรับใน browser ใหม่ๆ) */
+    margin-right: 8px;
+    cursor: pointer;
+    transform: scale(1.1); /* ขยายให้ใหญ่ขึ้นเล็กน้อย */
+}
+
+/* 6. ส่วนงานอดิเรก (Hobbies) */
+.form-input div {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+}
+
+/* 7. พื้นที่ข้อความ (Textarea) */
+textarea {
+    width: 100%;
+    height: 110px;
+    margin-top: 10px;
+    padding: 12px;
+    border: 2px solid var(--earth-border);
+    background-color: #faf9f6;
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--earth-text-dark);
+    resize: vertical;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+/* 8. ปุ่มส่งข้อมูล (Button) */
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.button {
+    /* ใช้สีส้มอิฐเป็นพื้นหลังปุ่ม */
+    background-color: var(--earth-accent);
+    color: var(--earth-bg-card); /* สีตัวอักษรบนปุ่มเป็นสีครีมสว่าง */
+    padding: 14px 45px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(192, 124, 95, 0.3); /* เงาปุ่มนุ่มๆ */
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--earth-accent-hover); /* เข้มขึ้นเมื่อชี้ */
+    box-shadow: 0 6px 15px rgba(192, 124, 95, 0.4);
+    transform: translateY(-2px); /* ลอยขึ้นนิดนึง */
+}
+
+.button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* 9. การรองรับหน้าจอมือถือ (Responsive) */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px;
+    }
+
+    .flex.form-input {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .header-form {
+        margin-bottom: 0;
+    }
+    
+    .form {
+        width: 100%;
+    }
+
+    .gender .flex {
+        flex-direction: row; /* เพศให้เรียงแนวนอนเหมือนเดิมในมือถือ */
+        flex-wrap: wrap; /* ถ้าที่ตีบเกินไปให้ปัดลงบรรทัดใหม่ */
+    }
+}
