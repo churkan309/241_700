@@ -23,6 +23,9 @@ const e = require('express');
 const { use } = require('react');
 const mysql = require('mysql2/promise');
 const app = express();
+const cors = require('cors');
+
+app.use(cors());
 
 app.use(bodyParser.json());
 
